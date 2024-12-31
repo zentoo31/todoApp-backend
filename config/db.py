@@ -1,13 +1,16 @@
-import psycopg2
-from config.config import DB_STR
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from config.config import DATABASE_URL
 
-def connect():
+engine = create_engine(DATABASE_URL)
+
+# Crear una clase de sesión para interactuar con la base de datos
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+# Función para obtener la sesión
+def get_db():
+    db = SessionLocal()
     try:
-        dsn = DB_STR
-        conn = psycopg2.connect(dsn)
-        print("¡Se ha conectado a la base de datos!")
-        return conn
-    except Exception as e:
-        print(f"Error al conectar a la base de datos: {e}")
-        return None
-
+        yield db
+    finally:
+        db.close()
