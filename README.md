@@ -7,13 +7,14 @@ Este es el backend de la aplicación de tareas (Todo App), desarrollado con Flas
 - **Flask**: Framework web principal.
 - **Flask-SQLAlchemy**: ORM para gestionar la base de datos SQL.
 - **Flask-SocketIO**: Para soporte de WebSockets y comunicación en tiempo real.
-- **SQLite** (configurable para otros motores SQL).
+- **PostgreSQL** (configurable para otros motores SQL).
 - **Flask-Migrate**: Manejo de migraciones para la base de datos.
 
 ## Requisitos Previos
 - Python 3.8 o superior
 - pip (administrador de paquetes de Python)
 - Git (opcional, para clonar el repositorio)
+- PostgreSQL
 
 ## Instalación y Configuración
 
@@ -79,12 +80,10 @@ El backend estará disponible en [http://127.0.0.1:5000](http://127.0.0.1:5000).
 ## Estructura del Proyecto
 ```
 backend/
-├── app.py            # Punto de entrada de la aplicación
+├── main.py            # Punto de entrada de la aplicación
 ├── models.py         # Modelos de datos con SQLAlchemy
 ├── routes/           # Rutas de la API
 ├── static/           # Archivos estáticos (si aplica)
-├── templates/        # Plantillas HTML (si aplica)
-├── migrations/       # Archivos de migración
 └── .env              # Configuraciones sensibles
 ```
 
