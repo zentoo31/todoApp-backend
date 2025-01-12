@@ -46,4 +46,7 @@ class UserService:
             
             result = bcrypt.checkpw(password=password_binary, hashed_password=existing_user.password)
             
-            return result
+            if result:
+                return {'boolean': result, 'id': existing_user.id}
+            else:
+                return {'boolean': result}
