@@ -1,6 +1,6 @@
-from sqlalchemy.orm import Session
 from config.db import get_db
 from models.users import User
+from models.login_attemps import Login_attemps
 import bcrypt 
 
 class UserService:
@@ -47,6 +47,10 @@ class UserService:
             result = bcrypt.checkpw(password=password_binary, hashed_password=existing_user.password)
             
             if result:
+                new_login_attempt = Login_attemps(
+                    
+                )
+                              
                 return {'boolean': result, 'id': existing_user.id}
             else:
                 return {'boolean': result}
